@@ -13,24 +13,19 @@ contract Escrow {
         State status; 
     }
 
-    // Mapping to store escrow data by escrow ID
     mapping(uint256 => EscrowData) public escrows;
 
-    // Counter to track the number of escrows created
     uint256 public escrowCount;
 
-    // Events to notify actions
     event EscrowCreated(uint256 indexed escrowId, address indexed buyer, address indexed seller, uint256 amount);
     event PaymentReleased(uint256 indexed escrowId, address indexed seller, uint256 amount);
     event PaymentRefunded(uint256 indexed escrowId, address indexed buyer, uint256 amount);
 
-    /// @dev Modifier to restrict access to the buyer
     modifier onlyBuyer(uint256 _escrowId) {
         require(msg.sender == escrows[_escrowId].buyer, "Only the buyer can perform this action");
         _;
     }
 
-    /// @dev Modifier to restrict access to the seller
     modifier onlySeller(uint256 _escrowId) {
         require(msg.sender == escrows[_escrowId].seller, "Only the seller can perform this action");
         _;

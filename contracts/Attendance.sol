@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.28;
 
 contract DailyAttendance {
     // Structure to store user attendance details
     struct User {
-        uint256 totalDaysAttended; // Total number of days attended
-        bool attendedToday; // Whether the user has attended today
+        uint256 totalDaysAttended; 
+        bool attendedToday; 
     }
 
     mapping(address => User) public users;
