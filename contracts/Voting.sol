@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.26;
 
 contract Election {
     // Structure to store candidate details
@@ -10,9 +10,9 @@ contract Election {
     }
 
     struct Voter {
-        bool authorized; // Whether the voter is authorized to vote
-        bool voted; // Whether the voter has already voted
-        uint256 vote; // The ID of the candidate the voter voted for
+        bool authorized; 
+        bool voted; 
+        uint256 vote; 
     }
 
     mapping(uint256 => Candidate) public candidates;
@@ -24,7 +24,6 @@ contract Election {
     event VoterAuthorized(address indexed voter);
     event VoteCast(address indexed voter, uint256 indexed candidateId);
 
-    /// @dev Constructor to set the contract owner
     constructor() {
         owner = msg.sender;
     }
